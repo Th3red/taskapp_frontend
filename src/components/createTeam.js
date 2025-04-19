@@ -42,7 +42,7 @@ function CreateTeam() {
       const result = await response.json();
 
       if (response.ok) {
-        setMessage(`✅ Team "${result.name}" created!`);
+        setMessage(`Team "${result.name}" created!`);
         localStorage.setItem('teamId', result._id); // save for later use
         setForm({ name: '', description: '', members: '' });
       } else {

@@ -7,13 +7,13 @@ function TaskForm({ onTaskCreated }) {
     section: '',
     assignmentNumber: '',
     assignedTo: '',
-    dueDate: '' // ✅ added due date
+    dueDate: '' /
   });
 
   const [members, setMembers] = useState([]);
   const teamId = localStorage.getItem('teamId');
   const token = localStorage.getItem('token');
-  const userId = localStorage.getItem('userId'); // ✅ get requester ID
+  const userId = localStorage.getItem('userId'); 
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function TaskForm({ onTaskCreated }) {
 
     const payload = {
       ...form,
-      requesterId: userId // ✅ include the person assigning the task
+      requesterId: userId 
     };
 
     try {
@@ -79,7 +79,7 @@ function TaskForm({ onTaskCreated }) {
           ))}
         </select>
 
-        {/* ✅ New due date input */}
+        {/*duedate */}
         <input
           name="dueDate"
           type="date"

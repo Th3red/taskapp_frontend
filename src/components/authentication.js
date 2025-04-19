@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'; // Import useSelector and useDispatch
+import { useDispatch, useSelector } from 'react-redux';
 import Login from './login';
 import Register from './register';
 import { logoutUser } from '../actions/authActions';
@@ -9,11 +9,11 @@ const Authentication = () => {
   const [activeTab, setActiveTab] = useState('login');
   const dispatch = useDispatch(); 
 
-  // Retrieve Redux state values
+
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const username = useSelector((state) => state.auth.username);
 
-  // Switch tabs when user selects a tab
+
   const handleSelect = (selectedKey) => {
     setActiveTab(selectedKey);
   };
