@@ -71,7 +71,7 @@ export function submitRegister(data) {
         dispatch(submitLogin(data));
       })
       .then(() => {
-        window.location.href = '/dashboard';
+        window.location.href = '/signin';
       })
       .catch((err) => console.error('Register error:', err));
   };
