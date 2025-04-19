@@ -1,3 +1,12 @@
+#
+Somewhat of a working frontend: register will now redirect to root page, after adding static.json file - no matter what path the user visits, use the index.html then react router will take care of the rest.
+
+need to modify to redirect to dashboard so user does not have to login again
+
+or just display sucessfully registered message after register
+
+https://taskapp-frontend-wrwn.onrender.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
