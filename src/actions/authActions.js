@@ -65,13 +65,16 @@ export function submitRegister(data) {
         return res.json();
       })
       .then(() => {
+
+
+
         // Log in immediately after registering
         // redirect to dashboard
         //window.location.href = '/dashboard';
         dispatch(submitLogin(data));
       })
       .then(() => {
-        window.location.href = '/signin';
+        window.location.href = '/';
       })
       .catch((err) => console.error('Register error:', err));
   };
