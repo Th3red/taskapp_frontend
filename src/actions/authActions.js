@@ -70,6 +70,9 @@ export function submitRegister(data) {
         //window.location.href = '/dashboard';
         dispatch(submitLogin(data));
       })
+      .then(() => {
+        window.location.href = '/dashboard';
+      })
       .catch((err) => console.error('Register error:', err));
   };
 }
