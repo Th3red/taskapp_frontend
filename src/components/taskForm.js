@@ -25,7 +25,7 @@ function TaskForm({ onTaskCreated }) {
         .then(data => setMembers(data.members || []))
         .catch(err => console.error('Error fetching members:', err));
     }
-  }, [teamId]);
+  }, [teamId, API_URL, token]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

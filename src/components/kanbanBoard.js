@@ -59,7 +59,7 @@ function KanbanBoard() {
       .then(res => res.json())
       .then(setTasks)
       .catch(err => console.error('Failed to load tasks', err));
-  }, [teamId]);
+  }, [teamId, API_URL, token]);
   
   const handleDragStart = (event) => {
     setActiveTaskId(event.active.id);

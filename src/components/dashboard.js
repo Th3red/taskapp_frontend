@@ -32,7 +32,7 @@ function Dashboard() {
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.error('Error fetching tasks:', err));
-  }, [teamId]);
+  }, [teamId, API_URL, token]);
 
   // Check if user is lead
   useEffect(() => {
@@ -49,7 +49,7 @@ function Dashboard() {
         setIsLead(member?.role === 'lead');
       })
       .catch((err) => console.error('Error checking role:', err));
-  }, [teamId, userId]);
+  }, [teamId, userId, API_URL, token]);
 
   const countByStatus = (status) =>
     tasks.filter((task) => task.status === status).length;

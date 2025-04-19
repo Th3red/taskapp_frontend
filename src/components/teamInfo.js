@@ -18,7 +18,7 @@ function TeamInfo() {
       .then((res) => res.json())
       .then(setTeamInfo)
       .catch((err) => console.error('Failed to fetch team info:', err));
-  }, [teamId]);
+  }, [teamId, API_URL, token]);
 
   if (!teamInfo) return null;
 
