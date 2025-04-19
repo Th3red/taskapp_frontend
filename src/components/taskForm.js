@@ -7,7 +7,7 @@ function TaskForm({ onTaskCreated }) {
     section: '',
     assignmentNumber: '',
     assignedTo: '',
-    dueDate: '' /
+    dueDate: ''
   });
 
   const [members, setMembers] = useState([]);
