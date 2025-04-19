@@ -67,7 +67,7 @@ export function submitRegister(data) {
       .then(() => {
         // Log in immediately after registering
         // redirect to dashboard
-        window.location.href = '/dashboard';
+        //window.location.href = '/dashboard';
         dispatch(submitLogin(data));
       })
       .catch((err) => console.error('Register error:', err));
