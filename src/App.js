@@ -15,7 +15,7 @@ function App() {
   const { loggedIn } = useSelector((state) => state.auth);
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-700 text-gray-100">
       <Header />
       <div className="container mt-3">
         <Routes>
@@ -29,7 +29,9 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
-    </>
+
+
+    </div>
   );
 }
 

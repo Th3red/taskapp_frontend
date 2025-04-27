@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Navigate } from "react-router-dom";
 import { submitLogin } from '../actions/authActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Form, Button } from 'react-bootstrap';
 
 function Login() {
@@ -10,7 +12,7 @@ function Login() {
   });
 
   const dispatch = useDispatch();
-
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
   const updateDetails = (event) => {
     setDetails({
       ...details,
@@ -22,10 +24,12 @@ function Login() {
     event.preventDefault(); // Prevent form from refreshing the page
     dispatch(submitLogin(details));
   };
-
+  if (loggedIn) {
+    return <Navigate to="/dashboard" replace />; // Redirect to dashboard board if logged in
+  }
   return (
     <div className="login-container">
-        <Form onSubmit={login} className='login-form bg-dark text-light p-4 rounded'> {/* Use onSubmit for the form */}
+        <Form onSubmit={login} className='login-form bg-dark text-light p-4 rounded'> 
         <Form.Group controlId="username" className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -47,7 +51,7 @@ function Login() {
             onChange={updateDetails}
             />
         </Form.Group>
-        <Button type="submit">Sign in</Button> {/* Use type="submit" */}
+        <Button type="submit">Sign in</Button> 
         </Form>
     </div>
   );

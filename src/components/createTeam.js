@@ -4,7 +4,7 @@ function CreateTeam() {
   const [form, setForm] = useState({
     name: '',
     description: '',
-    members: '' // comma-separated usernames
+    members: ''
   });
 
   const [message, setMessage] = useState('');
@@ -55,7 +55,7 @@ function CreateTeam() {
   };
 
   return (
-    <div className="create-team-form bg-white p-4 rounded shadow">
+    <div className="create-team-form bg-gray-800 p-4 rounded shadow">
       <h2>Create a Team</h2>
       <form onSubmit={handleSubmit} className="grid gap-3">
         <input
@@ -64,7 +64,7 @@ function CreateTeam() {
           placeholder="Team Name"
           value={form.name}
           onChange={handleChange}
-          className="p-2 border rounded"
+          className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
           required
         />
         <textarea
@@ -72,7 +72,7 @@ function CreateTeam() {
           placeholder="Team Description"
           value={form.description}
           onChange={handleChange}
-          className="p-2 border rounded"
+          className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <input
           name="members"
@@ -80,9 +80,9 @@ function CreateTeam() {
           placeholder="Member usernames (comma-separated)"
           value={form.members}
           onChange={handleChange}
-          className="p-2 border rounded"
+          className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-        <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">Create Team</button>
+        <button type="submit" className="mt-2 bg-indigo-600 hover:bg-indigo-500 text-white py-1 px-3 rounded">Create Team</button>
       </form>
       {message && <p className="mt-3 text-sm">{message}</p>}
     </div>

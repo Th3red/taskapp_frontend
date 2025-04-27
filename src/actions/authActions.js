@@ -1,5 +1,3 @@
-// actions/authActions.js
-
 import actionTypes from '../constants/actionTypes';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -66,10 +64,6 @@ export function submitRegister(data) {
       })
       .then(() => {
 
-
-
-        // Log in immediately after registering
-        // redirect to dashboard
         //window.location.href = '/dashboard';
         dispatch(submitLogin(data));
       })

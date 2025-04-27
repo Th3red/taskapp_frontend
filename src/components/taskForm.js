@@ -15,7 +15,7 @@ function TaskForm({ onTaskCreated }) {
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId'); 
   const API_URL = process.env.REACT_APP_API_URL;
-
+  
   useEffect(() => {
     if (teamId) {
       fetch(`${API_URL}/teams/${teamId}/members`, {
@@ -30,13 +30,20 @@ function TaskForm({ onTaskCreated }) {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
+  if (!teamId) {
+    return (
+      <p className="text-center text-red-400 mt-4">
+        Your not in a team yets.
+      </p>
+    );
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
       ...form,
-      requesterId: userId 
+      requesterId: userId,
+      status: 'todo',
     };
 
     try {
@@ -55,7 +62,7 @@ function TaskForm({ onTaskCreated }) {
         section: '',
         assignmentNumber: '',
         assignedTo: '',
-        dueDate: '' // reset due date
+        dueDate: ''
       });
 
       if (onTaskCreated) onTaskCreated();
@@ -65,30 +72,37 @@ function TaskForm({ onTaskCreated }) {
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow mb-4">
-      <h3 className="text-lg font-bold mb-2">Assign a Task</h3>
+    <div className="
+  bg-gray-800 
+  p-4 
+  rounded-lg 
+  shadow-inner 
+  mb-4 
+  text-gray-200
+  space-y-3
+">
+      <h3 className="mt-2 bg-gray-700 hover:bg-indigo-500 text-white py-1 px-3 rounded">Assign a Task</h3>
       <form onSubmit={handleSubmit} className="grid gap-2">
-        <input name="title" value={form.title} onChange={handleChange} placeholder="Title" className="p-2 border rounded" required />
-        <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" className="p-2 border rounded" />
-        <input name="section" value={form.section} onChange={handleChange} placeholder="Section" className="p-2 border rounded" type="number" />
-        <input name="assignmentNumber" value={form.assignmentNumber} onChange={handleChange} placeholder="Assignment Number" className="p-2 border rounded" type="number" />
-        <select name="assignedTo" value={form.assignedTo} onChange={handleChange} className="p-2 border rounded">
+        <input name="title" value={form.title} onChange={handleChange} placeholder="Title" className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+        <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input name="section" value={form.section} onChange={handleChange} placeholder="Section" className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" type="number" min="0"/>
+        <input name="assignmentNumber" value={form.assignmentNumber} onChange={handleChange} placeholder="Assignment Number" className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" type="number" min="0" />
+        <select name="assignedTo" value={form.assignedTo} onChange={handleChange} className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
           <option value="">Select Member</option>
           {members.map(member => (
             <option key={member._id} value={member.username}>{member.username}</option>
           ))}
         </select>
 
-        {/*duedate */}
         <input
           name="dueDate"
           type="date"
           value={form.dueDate}
           onChange={handleChange}
-          className="p-2 border rounded"
+          className="bg-gray-700 text-gray-200 placeholder-gray-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
 
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Assign</button>
+        <button type="submit" className="mt-2 bg-indigo-600 hover:bg-indigo-500 text-white py-1 px-3 rounded">Assign</button>
       </form>
     </div>
   );

@@ -1,4 +1,3 @@
-// src/components/Header.js
 import React from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -15,7 +14,7 @@ function Header() {
   };
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" className="shadow">
+    <Navbar bg="indigo-600" variant="dark" expand="lg" className="shadow">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="fw-bold">
           Task Manager

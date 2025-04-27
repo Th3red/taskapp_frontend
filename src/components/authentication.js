@@ -24,7 +24,6 @@ const Authentication = () => {
 
   const userNotLoggedIn = (
     <div className="auth-container">
-      {/* Render Nav tabs */}
       <Nav variant="tabs" activeKey={activeTab} onSelect={handleSelect} className="mb-3 dark-tabs justify-content-center">
         <Nav.Item>
           <Nav.Link eventKey="login">Login</Nav.Link>
@@ -33,7 +32,6 @@ const Authentication = () => {
           <Nav.Link eventKey="register">Register</Nav.Link>
         </Nav.Item>
       </Nav>
-      {/* Conditionally render based on the active tab */}
       {activeTab === 'register' ? <Register /> : <Login />}
     </div>
   );
