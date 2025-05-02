@@ -140,10 +140,10 @@ export default function KanbanBoard({ refreshKey }) {
 
 
   const grouped = {
-    Backlog     : tasks.filter(t => t.status === 'Backlog'),
-    Todo        : tasks.filter(t => t.status === 'Todo'),
+    Backlog : tasks.filter(t => t.status === 'Backlog'),
+    Todo : tasks.filter(t => t.status === 'Todo'),
     'In Progress': tasks.filter(t => t.status === 'In Progress'),
-    Completed   : tasks.filter(t => t.status === 'Completed'),
+    Completed : tasks.filter(t => t.status === 'Completed'),
   };
 
   if (!teamId)

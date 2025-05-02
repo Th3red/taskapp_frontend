@@ -26,7 +26,7 @@ function CreateTeam() {
       name: form.name,
       description: form.description,
       leadId: leadId,
-      members: form.members, // send as a comma-separated string (backend handles conversion)
+      members: form.members,
     };
 
     try {
@@ -43,7 +43,7 @@ function CreateTeam() {
 
       if (response.ok) {
         setMessage(`Team "${result.name}" created!`);
-        localStorage.setItem('teamId', result._id); // save for later use
+        localStorage.setItem('teamId', result._id);
         setForm({ name: '', description: '', members: '' });
       } else {
         setMessage(result.msg || 'Something went wrong.');
